@@ -5,7 +5,7 @@ This app is based on the book "Android test driven development by tutorials".
 It's main goal is to build simple app with the TDD approach focusing on Integration tests only.
 No unit or end-to-end tests are performed in the app.
 
-It's based on Chapters 7 and 8 of the book.
+It's based on Chapters 8 and 9 of the book.
 
 ## Functionality:
 
