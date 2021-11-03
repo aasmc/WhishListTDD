@@ -19,7 +19,9 @@ class DetailViewModelTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val wishListDao: WishlistDao =
-        Mockito.spy(WishlistDaoImpl())
+        Mockito.spy(
+            WishlistDaoImpl()
+        )
 
     private val viewModel =
         DetailViewModel(RepositoryImpl(wishListDao))
