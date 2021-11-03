@@ -1,19 +1,23 @@
 package ru.aasmc.whishlist.app
 
+import androidx.room.Room
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.aasmc.whishlist.DetailViewModel
 import ru.aasmc.whishlist.MainViewModel
-import ru.aasmc.whishlist.persistence.Repository
-import ru.aasmc.whishlist.persistence.RepositoryImpl
-import ru.aasmc.whishlist.persistence.WishlistDao
-import ru.aasmc.whishlist.persistence.WishlistDaoImpl
+import ru.aasmc.whishlist.persistence.*
 
 val appModule = module {
 
     single<Repository> { RepositoryImpl(get()) }
 
-    single<WishlistDao> { WishlistDaoImpl() }
+    single<WishlistDao> {
+        Room.databaseBuilder(
+            get(),
+            WishlistDatabase::class.java, "wishlist_database.db"
+        ).allowMainThreadQueries()
+            .build().wishListDao()
+    }
 
     viewModel { MainViewModel(get()) }
 
